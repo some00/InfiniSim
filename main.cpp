@@ -34,6 +34,7 @@
 #include "components/datetime/DateTimeController.h"
 #include "components/heartrate/HeartRateController.h"
 #include "components/fs/FS.h"
+#include "components/periodic_alert/PeriodicAlertController.h"
 #include "drivers/Spi.h"
 #include "drivers/SpiMaster.h"
 #include "drivers/SpiNorFlash.h"
@@ -353,6 +354,9 @@ Pinetime::Controllers::AlarmController alarmController {dateTimeController};
 Pinetime::Controllers::TouchHandler touchHandler;
 Pinetime::Controllers::ButtonHandler buttonHandler;
 Pinetime::Controllers::BrightnessController brightnessController {};
+Pinetime::Controllers::PeriodicAlertController periodicAlertController ( dateTimeController,
+                                                                         settingsController,
+                                                                         motorController );
 
 Pinetime::Applications::DisplayApp displayApp(lcd,
                                               touchPanel,
@@ -371,7 +375,8 @@ Pinetime::Applications::DisplayApp displayApp(lcd,
                                               alarmController,
                                               brightnessController,
                                               touchHandler,
-                                              fs);
+                                              fs,
+                                              periodicAlertController);
 
 Pinetime::System::SystemTask systemTask(spi,
                                         spiNorFlash,
@@ -384,6 +389,7 @@ Pinetime::System::SystemTask systemTask(spi,
                                         timerController,
                                         #endif
                                         alarmController,
+                                        periodicAlertController,
                                         watchdog,
                                         notificationManager,
                                         heartRateSensor,

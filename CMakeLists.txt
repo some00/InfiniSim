@@ -196,6 +196,9 @@ target_sources(infinisim PUBLIC
   ${InfiniTime_DIR}/src/components/fs/FS.cpp
   ${InfiniTime_DIR}/src/components/motor/MotorController.h
   ${InfiniTime_DIR}/src/components/motor/MotorController.cpp
+  ${InfiniTime_DIR}/src/components/periodic_alert/PeriodicAlertController.cpp
+  ${InfiniTime_DIR}/src/components/timer/TimerController.h
+  ${InfiniTime_DIR}/src/components/timer/TimerController.cpp
   ${InfiniTime_DIR}/src/drivers/PinMap.h
   ${InfiniTime_DIR}/src/drivers/Spi.h
   ${InfiniTime_DIR}/src/drivers/Spi.cpp
